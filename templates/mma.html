@@ -1,0 +1,138 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- Fight Cards Section -->
+<div class="container mt-5">
+  <h1
+    class="box-title"
+    style="font-family: 'Inter', sans-serif; font-weight: 800"
+  >
+    GLOBAL MMA SCHEDULE
+  </h1>
+  <div class="row">
+    {% for event in mma_events %}
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h4
+            class="card-title"
+            style="font-family: 'Inter', sans-serif; font-weight: 800"
+          >
+            {{ event['title'] + per_page * (page - 1) | title }}
+          </h4>
+          <br />
+          <div class="list-container">
+            <ul class="list-bg list-group list-group-flush">
+              {% for fight in event['mma_detail'] %}
+              <li
+                class="list-group-item lh-4 border-0"
+                style="font-family: 'Consolas', monospace; font-weight: 500"
+              >
+                {{ fight }}
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<br />
+
+<!-- Pagination -->
+<nav aria-label="Page navigation">
+  <ul class="pagination custom-pagination justify-content-center">
+    {% if page > 1 %}
+    <li class="page-item">
+      <a class="page-link" href="{{ url_for('mma_scrape', page=page-1) }}"
+        >Previous</a
+      >
+    </li>
+    {% endif %} {% for p in range(1, (total_fight_cards // per_page) + 2) %}
+    <li class="page-item {% if p == page %}active{% endif %}">
+      <a class="page-link" href="{{ url_for('mma_scrape', page=p) }}"
+        >{{ p }}</a
+      >
+    </li>
+    {% endfor %} {% if page < (total_fight_cards // per_page) + 1 %}
+    <li class="page-item">
+      <a class="page-link" href="{{ url_for('mma_scrape', page=page+1) }}"
+        >Next</a
+      >
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+<br />
+
+<!--Quote Section-->
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>“Who the f— is that guy?”</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    Conor Mcgregor at
+    <cite title="Source Title"
+      >UFC 205 Press Conference <small>(2016)</small></cite
+    >
+  </figcaption>
+</figure>
+
+<style>
+  .box-title {
+    padding: 0 30px;
+  }
+
+  .container .row {
+    padding: 30px;
+  }
+
+  .custom-pagination {
+    --bs-pagination-active-bg: #582eff;
+    --bs-pagination-active-border-color: #582eff;
+    --bs-pagination-color: #fff;
+    --bs-pagination-hover-color: #582eff;
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 0.5rem 0.7rem 0;
+  }
+
+  .list-container {
+    max-height: 290px;
+    overflow-y: auto;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+  }
+
+  .list-group-item {
+    padding: 10px;
+  }
+
+  .card {
+    border: 0.1rem solid #000;
+  }
+
+  .card:hover {
+    border: 0.1rem solid #0d6efd;
+    cursor: pointer;
+  }
+
+  .box-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    padding-bottom: 1.5rem;
+  }
+</style>
+
+{% endblock %}

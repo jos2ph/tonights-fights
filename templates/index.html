@@ -1,0 +1,76 @@
+{% extends 'base.html' %} {% block content %}
+
+<!-- Page Content-->
+<div class="container px-4 px-lg-5">
+  <!-- Header-->
+  <header class="py-5">
+    <div class="container px-5">
+      <div class="row gx-5 align-items-center justify-content-center">
+        <div class="col-lg-8 col-xl-7 col-xxl-6">
+          <div class="my-5 text-center text-xl-start">
+            <h1
+              class="hero-title text-white mb-2"
+              style="
+                font-family: 'Inter', sans-serif;
+                font-weight: 800;
+                font-size: 3.6rem;
+              "
+            >
+              A NEW ERA OF BOXING CONTENT
+            </h1>
+            <p
+              class="lead fw-normal text-white-20 mb-4"
+              style="
+                font-family: 'Consolas', monospace;
+                font-weight: 500;
+                font-size: 1rem;
+              "
+            >
+              Boxing and MMA's biggest fights,
+              <strong>all in one place.</strong>
+            </p>
+            <div
+              class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start"
+            >
+              <button
+                class="btn-left btn btn-info btn-lg px-4 me-sm-3"
+                id="btn-left"
+                href="/"
+                style="font-family: 'Consolas', monospace; font-weight: 500"
+              >
+                Browse Schedule
+              </button>
+              <a
+                class="btn btn-secondary btn-lg px-4"
+                href="/support"
+                style="font-family: 'Consolas', monospace; font-weight: 500"
+                >Support</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+          <img
+            class="img-fluid rounded-3 my-5"
+            src="/static/images/game-day.svg"
+            alt="..."
+          />
+        </div>
+      </div>
+    </div>
+  </header>
+  {% include 'boxing_cards.html' %}
+  <style>
+    .btn-left {
+      --bs-btn-bg: #582eff;
+      --bs-btn-border-color: #fff;
+      --bs-btn-color: #fff;
+      --bs-btn-border-color: #582eff;
+      --bs-btn-hover-color: #fff;
+      --bs-btn-hover-bg: #232323;
+      --bs-btn-hover-border-color: #fff;
+    }
+  </style>
+</div>
+
+{% endblock %}
