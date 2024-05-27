@@ -12,10 +12,15 @@
     {% for event in mma_events %}
     <div class="col-md-4 mb-4">
       <div class="card h-100">
-        <div class="card-body">
+        <div class="card-body" style="background-color: #131516">
           <h4
             class="card-title"
-            style="font-family: 'Inter', sans-serif; font-weight: 800"
+            style="
+              font-family: 'Inter', sans-serif;
+              font-weight: 800;
+              color: #fff;
+              background-color: #131516;
+            "
           >
             {{ event['title'] + per_page * (page - 1) | title }}
           </h4>
@@ -25,7 +30,12 @@
               {% for fight in event['mma_detail'] %}
               <li
                 class="list-group-item lh-4 border-0"
-                style="font-family: 'Consolas', monospace; font-weight: 500"
+                style="
+                  font-family: 'Consolas', monospace;
+                  font-weight: 500;
+                  color: #fff;
+                  background-color: #131516;
+                "
               >
                 {{ fight }}
               </li>
@@ -93,6 +103,7 @@
     --bs-pagination-active-bg: #582eff;
     --bs-pagination-active-border-color: #582eff;
     --bs-pagination-color: #fff;
+    --bs-pagination-bg: #131516;
     --bs-pagination-hover-color: #582eff;
   }
 
@@ -118,11 +129,11 @@
   }
 
   .card {
-    border: 0.1rem solid #000;
+    border: 0.1rem solid #grey;
   }
 
   .card:hover {
-    border: 0.1rem solid #0d6efd;
+    border: 0.1rem solid #582eff;
     cursor: pointer;
   }
 
